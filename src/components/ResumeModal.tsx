@@ -11,13 +11,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   const handlePrint = () => {
-    window.print();
+    window.open('/resume/Kalaivani-Resume.pdf', '_blank');
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-lg animate-in fade-in duration-200 overflow-y-auto">
       <div className="relative w-full max-w-4xl max-h-[90vh] bg-[#0c0c12] border border-[#D4AF37]/40 rounded-3xl shadow-gold-glow-lg flex flex-col overflow-hidden my-auto">
-        
+
         {/* Top Control Bar */}
         <div className="p-4 sm:p-6 bg-[#12121c] border-b border-white/10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
@@ -40,7 +40,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#E2B857] text-black font-extrabold text-xs font-mono transition-colors shadow-md"
             >
               <Printer className="w-4 h-4" />
-              <span>PRINT / SAVE PDF</span>
+              <span>OPEN OFFICIAL RESUME</span>
             </button>
 
             <button
@@ -54,7 +54,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
         {/* Resume Content Paper View */}
         <div className="p-6 sm:p-10 overflow-y-auto space-y-8 text-gray-200 text-sm font-sans bg-[#0a0a0f] selection:bg-[#D4AF37] selection:text-black print:text-black print:bg-white">
-          
+
           {/* Header Block */}
           <div className="border-b border-white/10 pb-6 space-y-2">
             <h1 className="text-3xl font-display font-extrabold text-white uppercase">

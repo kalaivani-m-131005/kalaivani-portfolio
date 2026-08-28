@@ -198,10 +198,11 @@ export const resumeData: ResumeData = {
   },
   achievements: [
     {
+
       title: "Google Gemini Student Ambassador (2026)",
-      detail: "Recognized as Google Gemini Student Ambassador combining AI technical depth, leadership, and innovation.",
       iconType: "gemini"
-    },
+    }
+    ,
     {
       title: "Presented research at ICRDICCT'25 International Conference",
       detail: "Presented Scopus-indexed research paper on AI and Biometrics emergency healthcare systems.",
@@ -254,28 +255,33 @@ export const resumeData: ResumeData = {
       id: 2,
       title: "Gemini Certified University Student",
       issuer: "Google for Education",
-      year: "2026"
+      year: "2026",
+      file: "cert-2.png"
     },
     {
       id: 3,
-      title: "Oracle SQL Explorer",
-      issuer: "Oracle University"
+      title: "Artificial Intelligence Fundamentals",
+      issuer: "IBM",
+      file: "cert-3.png"
     },
     {
       id: 4,
       title: "Prompt Engineering",
-      issuer: "Infosys Springboard"
+      issuer: "Infosys Springboard",
+      file: "cert-4.png"
     },
     {
       id: 5,
       title: "ServiceNow Virtual Internship Program",
       issuer: "ServiceNow",
-      year: "2026"
+      year: "2026",
+      file: "cert-5.png"
     },
     {
       id: 6,
       title: "Computer Application Course",
-      issuer: "Outbox Training (Offline)"
+      issuer: "Outbox Training (Offline)",
+      file: "cert-6.png"
     }
   ],
   languages: [
@@ -287,10 +293,22 @@ export const resumeData: ResumeData = {
     location: "Coimbatore, Tamil Nadu",
     phone: "9976775973",
     socials: [
-      { platform: "GitHub", placeholderUrl: "#" },
-      { platform: "LinkedIn", placeholderUrl: "#" },
-      { platform: "LeetCode", placeholderUrl: "#" },
-      { platform: "HackerRank", placeholderUrl: "#" }
+      {
+        platform: "GitHub",
+        placeholderUrl: "https://github.com/kalaivani-m-131005/"
+      },
+      {
+        platform: "LinkedIn",
+        placeholderUrl: "https://www.linkedin.com/in/kalaivani-m-488905352/"
+      },
+      {
+        platform: "LeetCode",
+        placeholderUrl: "https://leetcode.com/u/MKalaivani/"
+      },
+      {
+        platform: "HackerRank",
+        placeholderUrl: "https://www.hackerrank.com/profile/kalaimayilsamy13"
+      }
     ]
   }
 };
