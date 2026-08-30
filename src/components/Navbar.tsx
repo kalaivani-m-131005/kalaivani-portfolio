@@ -8,7 +8,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('summary');
 
   const navLinks = [
     { name: 'Summary', href: '#summary' },
@@ -45,11 +45,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#08080a]/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-[#08080a]/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand */}
@@ -75,11 +74,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                  isActive
-                    ? 'bg-[#D4AF37] text-black font-semibold shadow-md'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
-                }`}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${isActive
+                  ? 'bg-[#D4AF37] text-black font-semibold shadow-md'
+                  : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  }`}
               >
                 {link.name}
               </a>
@@ -112,6 +110,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white focus:outline-none"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -120,7 +120,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResumeModal }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#0a0a0e]/98 border-b border-white/10 px-4 pt-3 pb-6 space-y-2 backdrop-blur-xl animate-in slide-in-from-top-5 duration-200">
+        <div
+          id="mobile-navigation"
+          className="xl:hidden bg-[#0a0a0e]/98 border-b border-white/10 px-4 pt-3 pb-6 space-y-2 backdrop-blur-xl animate-in slide-in-from-top-5 duration-200"
+        >
           <div className="grid grid-cols-2 gap-2 pt-2">
             {navLinks.map((link) => (
               <a

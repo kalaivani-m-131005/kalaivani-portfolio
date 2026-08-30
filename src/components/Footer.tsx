@@ -1,46 +1,62 @@
 import React from 'react';
 import { resumeData } from '../data/resumeData';
-import { ArrowUp, ShieldCheck } from 'lucide-react';
+import { ArrowUp, Code2 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-white/10 bg-[#060608] py-12 px-4 relative z-10">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-        
-        {/* Left Branding */}
-        <div className="space-y-1 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2">
-            <span className="font-display font-bold text-white text-lg tracking-wider">
-              {resumeData.hero.name}
-            </span>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37]">
-              CGPA 9.14
-            </span>
+    <footer className="relative border-t border-white/[0.08] bg-[#060608] px-4 py-10 sm:py-12">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+
+          {/* Branding */}
+          <div className="text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2">
+              <Code2 className="w-4 h-4 text-[#D4AF37]" />
+
+              <span className="font-display text-lg font-bold tracking-wide text-white">
+                {resumeData.hero.name}
+              </span>
+            </div>
+
+            <p className="mt-2 text-xs text-gray-500">
+              Software Developer • Java Developer • AI & Data Analytics
+            </p>
           </div>
-          <p className="text-xs text-gray-400 font-mono">
-            Cinematic Portfolio & Factual Resume Platform • 2026
-          </p>
+
+          {/* Copyright */}
+          <div className="text-center">
+            <p className="font-mono text-[10px] text-gray-600">
+              © {currentYear} {resumeData.hero.name} — All rights reserved.
+            </p>
+
+            <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.18em] text-[#D4AF37]/50">
+              Designed & Built with Passion
+            </p>
+          </div>
+
+          {/* Scroll Top */}
+          <button
+            onClick={scrollToTop}
+            aria-label="Scroll back to top"
+            className="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-xs font-mono text-gray-400 transition-all duration-300 hover:border-[#D4AF37]/40 hover:text-[#D4AF37]"
+          >
+            <span>BACK TO TOP</span>
+
+            <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1" />
+          </button>
         </div>
 
-        {/* Center Fidelity Tag */}
-        <div className="flex items-center gap-2 text-xs font-mono text-gray-400 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
-          <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
-          <span>100% Resume Content Order Maintained</span>
-        </div>
-
-        {/* Right Scroll Top */}
-        <button
-          onClick={scrollToTop}
-          className="p-3 rounded-2xl glass-panel border border-white/10 hover:border-[#D4AF37] text-gray-300 hover:text-[#D4AF37] transition-all duration-200 group shadow-md"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
-        </button>
-
+        {/* Bottom cinematic line */}
+        <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent" />
       </div>
     </footer>
   );

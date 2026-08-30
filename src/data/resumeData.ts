@@ -138,11 +138,12 @@ export const resumeData: ResumeData = {
     },
     {
       id: "infosys",
-      role: "AI Intern (Selected)",
+      role: "Virtual Intern",
       company: "Infosys Springboard",
       period: "2026",
       selectedTag: true,
-      description: "Selected for AI internship program and gained exposure to machine learning concepts and real-world AI applications."
+      description:
+        "Selected for the Infosys Springboard Virtual Internship 7.0, gaining structured exposure to artificial intelligence concepts and industry-oriented learning."
     },
     {
       id: "codetech",
@@ -161,7 +162,15 @@ export const resumeData: ResumeData = {
   ],
   project: {
     title: "AI-Powered Career Accelerator Platform",
-    technologies: ["MERN Stack", "TypeScript", "Socket.io", "MongoDB Atlas", "Gemini API"],
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "TypeScript",
+      "Socket.io",
+      "Gemini API"
+    ],
     points: [
       "Developed a full-stack AI-powered career platform using MERN Stack with JWT authentication, role-based access control, and job management features.",
       "Integrated AI-based resume analysis, mock interviews, and real-time communication while building scalable RESTful APIs and MongoDB databases."
@@ -240,6 +249,7 @@ export const resumeData: ResumeData = {
     {
       degree: "HSC",
       institution: "Government Higher Secondary School, Coimbatore",
+      period: "2022 – 2023",
       score: "83.5%",
       scoreLabel: "Percentage"
     }

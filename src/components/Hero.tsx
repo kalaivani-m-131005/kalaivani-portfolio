@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
-        
+
         {/* Top Badges */}
         <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-mono tracking-wide shadow-gold-glow">
@@ -57,16 +57,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
               <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">CGPA / 10</span>
             </div>
             <div className="px-3 py-2 text-center border-r border-white/5 last:border-0">
-              <span className="block text-xl font-bold text-[#D4AF37] font-mono">2025410...</span>
-              <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">Patent Author</span>
+              <span className="block text-xl font-bold text-[#D4AF37] font-mono">
+                202541025866
+              </span>
+              <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">
+                Patent Author
+              </span>
             </div>
             <div className="px-3 py-2 text-center border-r border-white/5 last:border-0">
               <span className="block text-xl font-bold text-white font-mono">Scopus</span>
               <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">ICRDICCT'25</span>
             </div>
             <div className="px-3 py-2 text-center">
-              <span className="block text-xl font-bold text-[#D4AF37] font-mono">4</span>
-              <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">Internships</span>
+              <span className="block text-xl font-bold text-[#D4AF37] font-mono">
+                4
+              </span>
+              <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">
+                Internships
+              </span>
             </div>
           </div>
         </div>

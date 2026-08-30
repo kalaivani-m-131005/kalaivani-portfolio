@@ -2,90 +2,154 @@ import React, { useState } from 'react';
 import { resumeData } from '../data/resumeData';
 import type { Certification } from '../data/resumeData';
 import { CertificateModal } from './CertificateModal';
-import { Calendar, ShieldCheck, FileCheck } from 'lucide-react';
+import {
+  Calendar,
+  ShieldCheck,
+  FileCheck,
+  Award,
+  ArrowUpRight,
+} from 'lucide-react';
 
 export const Certifications: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
+  const certifications = resumeData.certifications;
+
   return (
-    <section id="certifications" className="py-16 px-4 max-w-5xl mx-auto">
-      <div className="space-y-8">
-        {/* Section Heading */}
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-xs text-[#D4AF37] font-semibold tracking-widest uppercase">
-            08. CREDENTIALS
+    <section
+      id="certifications"
+      aria-labelledby="certifications-heading"
+      className="relative overflow-hidden py-20 sm:py-24 px-4"
+    >
+      {/* Cinematic ambient glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 right-[-200px] h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-[#D4AF37]/[0.025] blur-[130px]"
+      />
+
+      <div className="relative max-w-5xl mx-auto">
+        {/* Section Label */}
+        <div className="flex items-center gap-3 mb-5">
+          <span className="font-mono text-[11px] sm:text-xs font-semibold tracking-[0.22em] text-[#D4AF37] uppercase whitespace-nowrap">
+            08. Credentials
           </span>
-          <div className="h-[1px] flex-1 bg-gradient-to-r from-[#D4AF37]/40 to-transparent" />
+
+          <div className="h-px flex-1 bg-gradient-to-r from-[#D4AF37]/40 via-white/10 to-transparent" />
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight uppercase">
-              8. CERTIFICATIONS
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-12">
+          <div className="max-w-3xl">
+            <h2
+              id="certifications-heading"
+              className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight uppercase"
+            >
+              Certifications
             </h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Professional credentials, cloud specializations, and industry certifications in exact sequence.
+
+            <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-gray-400">
+              Industry-recognized credentials across cloud computing,
+              artificial intelligence, prompt engineering, and enterprise
+              technologies.
             </p>
           </div>
-          <span className="text-xs font-mono text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full self-start">
-            6 Certificates Locked
-          </span>
+
+          {/* Dynamic count */}
+          <div className="inline-flex items-center self-start lg:self-auto gap-2.5 px-4 py-2 rounded-full bg-white/[0.035] border border-white/10">
+            <span className="h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.7)]" />
+
+            <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-300 uppercase">
+              {certifications.length} Credentials
+            </span>
+          </div>
         </div>
 
-        {/* 6 Certificate Cards Grid */}
+        {/* Certifications Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {resumeData.certifications.map((cert) => (
-            <div
-              key={cert.id}
-              className="p-6 rounded-2xl glass-panel border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-300 shadow-card-dark flex flex-col justify-between space-y-4 group relative overflow-hidden"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#D4AF37] font-bold tracking-wider">
-                    CERTIFICATE #0{cert.id}
-                  </span>
-                  {cert.score && (
-                    <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-bold">
-                      {cert.score}
-                    </span>
-                  )}
-                </div>
+          {certifications.map((cert, index) => {
+            const hasFile = Boolean(cert.file);
 
-                <h3 className="text-lg font-display font-bold text-white leading-snug group-hover:text-[#D4AF37] transition-colors">
-                  {cert.title}
-                </h3>
+            return (
+              <article
+                key={cert.id}
+                className="group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-[#D4AF37]/35 hover:bg-white/[0.045] hover:shadow-[0_18px_60px_rgba(0,0,0,0.28)]"
+              >
+                {/* Hover accent */}
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-full w-[2px] origin-top scale-y-0 bg-gradient-to-b from-[#D4AF37] via-[#D4AF37]/40 to-transparent transition-transform duration-500 group-hover:scale-y-100"
+                />
 
-                <div className="space-y-1 pt-1">
-                  <div className="text-xs text-gray-300 font-medium flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    <span>{cert.issuer}</span>
+                <div>
+                  {/* Icon + Score */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#D4AF37]/25 bg-[#D4AF37]/10 text-[#D4AF37] transition-transform duration-300 group-hover:scale-105">
+                      <Award className="h-5 w-5" />
+                    </div>
+
+                    {cert.score ? (
+                      <span className="rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 font-mono text-[10px] font-bold text-emerald-400">
+                        {cert.score}
+                      </span>
+                    ) : (
+                      <span className="font-mono text-[10px] tracking-[0.18em] text-gray-700">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    )}
                   </div>
 
-                  {cert.year && (
-                    <div className="text-xs text-gray-400 font-mono flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-gray-500" />
-                      <span>{cert.year}</span>
+                  {/* Content */}
+                  <div className="mt-6">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#D4AF37]/80">
+                      Professional Credential
+                    </span>
+
+                    <h3 className="mt-2 text-base sm:text-lg font-display font-bold leading-snug text-white transition-colors duration-300 group-hover:text-[#D4AF37]">
+                      {cert.title}
+                    </h3>
+
+                    <div className="mt-4 space-y-2">
+                      <div className="flex items-center gap-2 text-xs text-gray-400">
+                        <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-[#D4AF37]" />
+                        <span>{cert.issuer}</span>
+                      </div>
+
+                      {cert.year && (
+                        <div className="flex items-center gap-2 text-xs font-mono text-gray-500">
+                          <Calendar className="h-3.5 w-3.5 shrink-0" />
+                          <span>{cert.year}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Action */}
+                <div className="mt-6 pt-4 border-t border-white/[0.07]">
+                  {hasFile ? (
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCert(cert)}
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[10px] font-mono font-bold tracking-wider text-gray-300 uppercase transition-all duration-300 hover:border-[#D4AF37]/40 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]"
+                    >
+                      <FileCheck className="h-4 w-4" />
+                      View Credential
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </button>
+                  ) : (
+                    <div className="flex items-center justify-between text-[9px] font-mono uppercase tracking-[0.14em] text-gray-700">
+                      <span>Credential Recorded</span>
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]/60" />
                     </div>
                   )}
                 </div>
-              </div>
-
-              {/* View Certificate Button */}
-              <div className="pt-3 border-t border-white/10">
-                <button
-                  onClick={() => setSelectedCert(cert)}
-                  className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-[#D4AF37]/20 border border-white/10 hover:border-[#D4AF37]/50 text-gray-200 hover:text-[#D4AF37] text-xs font-mono font-bold uppercase transition-all duration-200 flex items-center justify-center gap-2 group/btn"
-                >
-                  <FileCheck className="w-4 h-4 text-[#D4AF37]" />
-                  <span>VIEW CERTIFICATE</span>
-                </button>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
 
-      {/* Modal Render */}
+      {/* Certificate Modal */}
       <CertificateModal
         certification={selectedCert}
         onClose={() => setSelectedCert(null)}
